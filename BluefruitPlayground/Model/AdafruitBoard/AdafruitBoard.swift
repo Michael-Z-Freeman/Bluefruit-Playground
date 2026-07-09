@@ -8,6 +8,7 @@
 
 import UIKit
 import FlexColorPicker
+import CoreBluetooth
 
 
 // Delegates for each sensor
@@ -104,6 +105,22 @@ class AdafruitBoard {
             case .quaternion: return "Quaternion"
             }
         }
+
+        var serviceUuid: CBUUID {
+            switch self {
+            case .neopixels: return BlePeripheral.kAdafruitNeoPixelsServiceUUID
+            case .light: return BlePeripheral.kAdafruitLightServiceUUID
+            case .buttons: return BlePeripheral.kAdafruitButtonsServiceUUID
+            case .toneGenerator: return BlePeripheral.kAdafruitToneGeneratorServiceUUID
+            case .accelerometer: return BlePeripheral.kAdafruitAccelerometerServiceUUID
+            case .temperature: return BlePeripheral.kAdafruitTemperatureServiceUUID
+            case .humidity: return BlePeripheral.kAdafruitHumidityServiceUUID
+            case .barometricPressure: return BlePeripheral.kAdafruitBarometricPressureServiceUUID
+            case .sound: return BlePeripheral.kAdafruitSoundSensorServiceUUID
+            case .gyroscope: return BlePeripheral.kAdafruitGyroscopeServiceUUID
+            case .quaternion: return BlePeripheral.kAdafruitQuaternionServiceUUID
+            }
+        }
     }
     
     // Notifications
@@ -180,9 +197,15 @@ class AdafruitBoard {
     func setupPeripheral(blePeripheral: BlePeripheral, services: [BoardService]? = nil, completion: @escaping (Result<Void, Error>) -> Void) {
         
         DLog("Discovering services")
+        let boardModel = blePeripheral.adafruitManufacturerData()?.boardModel
+        let selectedServices = services ?? defaultServices(for: boardModel)
+        let serviceUuidsToDiscover = shouldDiscoverOnlyKnownServices(for: boardModel) ? selectedServices.map { $0.serviceUuid } : nil
+        if Config.isDebugEnabled {
+            DLog("Board model: \(String(describing: boardModel)); services: \(selectedServices.map { $0.debugName }.joined(separator: ", "))")
+        }
         let peripheralIdentifier = blePeripheral.identifier
         NotificationCenter.default.post(name: .willDiscoverServices, object: nil, userInfo: [NotificationUserInfoKey.uuid.rawValue: peripheralIdentifier])
-        blePeripheral.discover(serviceUuids: nil) { error in
+        blePeripheral.discover(serviceUuids: serviceUuidsToDiscover) { error in
             // Check errors
             guard error == nil else {
                 DLog("Error discovering services")
@@ -193,8 +216,25 @@ class AdafruitBoard {
             }
             
             // Setup services
-            let selectedServices = /*Config.isDebugEnabled ? [.temperature] :*/ (services != nil ? services! : BoardService.allCases)   // If services is nil, select all services
             self.setupServices(blePeripheral: blePeripheral, services: selectedServices, completion: completion)
+        }
+    }
+
+    private func defaultServices(for model: BlePeripheral.AdafruitManufacturerData.BoardModel?) -> [BoardService] {
+        switch model {
+        case .feather_nRF52840_sense:
+            return [.light, .accelerometer, .temperature, .humidity, .barometricPressure, .sound, .gyroscope]
+        default:
+            return BoardService.allCases
+        }
+    }
+
+    private func shouldDiscoverOnlyKnownServices(for model: BlePeripheral.AdafruitManufacturerData.BoardModel?) -> Bool {
+        switch model {
+        case .feather_nRF52840_sense:
+            return true
+        default:
+            return false
         }
     }
     
@@ -203,108 +243,56 @@ class AdafruitBoard {
         // Set current peripheral
         self.blePeripheral = blePeripheral
         
-        // Setup services
-        let servicesGroup = DispatchGroup()
-        
-        // Pixel Service
-        if services.contains(.neopixels) {
-            servicesGroup.enter()
-            blePeripheral.adafruitNeoPixelsEnable() { _ in
-                servicesGroup.leave()
-            }
-        }
-        
-        // Light Service: Enable receiving data
-        if services.contains(.light) {
-            servicesGroup.enter()
-            blePeripheral.adafruitLightEnable(responseHandler: self.receiveLightData) { _ in
-                servicesGroup.leave()
-            }
-        }
-        
-        // Buttons Service: Enable receiving data
-        if services.contains(.buttons) {
-            servicesGroup.enter()
-            blePeripheral.adafruitButtonsEnable(responseHandler: self.receiveButtonsData) { _ in
-                servicesGroup.leave()
-            }
-        }
-        
-        // ToneGenerator Service: Enable
-        if services.contains(.toneGenerator) {
-            servicesGroup.enter()
-            blePeripheral.adafruitToneGeneratorEnable { _ in
-                servicesGroup.leave()
-            }
-        }
-        
-        // Accelerometer Service: Enable receiving data
-        if services.contains(.accelerometer) {
-            servicesGroup.enter()
-            blePeripheral.adafruitAccelerometerEnable(responseHandler: self.receiveAccelerometerData, completion: { _ in
-                servicesGroup.leave()
-            })
-        }
-        
-        // Temperature Service: Enable receiving data
-        if services.contains(.temperature) {
-            servicesGroup.enter()
-            blePeripheral.adafruitTemperatureEnable(responseHandler: self.receiveTemperatureData) { _ in
-                servicesGroup.leave()
-            }
-        }
-        
-        // Humidity Service: Enable receiving data
-        if services.contains(.humidity) {
-            servicesGroup.enter()
-            blePeripheral.adafruitHumidityEnable(responseHandler: self.receiveHumidityData) { _ in
-                servicesGroup.leave()
-            }
-        }
-        
-        // Barometric Pressure Service: Enable receiving data
-        if services.contains(.barometricPressure) {
-            servicesGroup.enter()
-            blePeripheral.adafruitBarometricPressureEnable(responseHandler: self.receiveBarometricPressureData) { _ in
-                servicesGroup.leave()
-            }
-        }
-        
-        // Sound Service: Enable receiving data
-        if services.contains(.sound) {
-            servicesGroup.enter()
-            blePeripheral.adafruitSoundEnable(responseHandler: self.receiveSoundData) { _ in
-                servicesGroup.leave()
-            }
-        }
-        
-        // Gyroscope Service: Enable receiving data
-        if services.contains(.gyroscope) {
-            servicesGroup.enter()
-            blePeripheral.adafruitGyroscopeEnable(responseHandler: self.receiveGyroscopeData) { _ in
-                servicesGroup.leave()
-            }
-        }
-        
-        // Quaternion Service: Enable receiving data
-        if services.contains(.quaternion) {
-            servicesGroup.enter()
-            blePeripheral.adafruitQuaternionEnable(responseHandler: self.receiveQuaternionData) { _ in
-                servicesGroup.leave()
-            }
-        }
-        
-        // Wait for all finished
-        servicesGroup.notify(queue: DispatchQueue.main) { [unowned self] in
+        setupServices(blePeripheral: blePeripheral, remainingServices: services, enabledServices: [], completion: completion)
+    }
+
+    private func setupServices(blePeripheral: BlePeripheral, remainingServices: [BoardService], enabledServices: [BoardService], completion: @escaping (Result<Void, Error>) -> Void) {
+        guard let service = remainingServices.first else {
             DLog("setupServices finished")
-            
+
             if Config.isDebugEnabled {
-                for service in services {
+                for service in enabledServices {
                     DLog(self.isEnabled(service: service) ? "\(service.debugName) reading enabled":"\(service.debugName) service not available")
                 }
             }
-            
+
             completion(.success(()))
+            return
+        }
+
+        let next = {
+            let remaining = Array(remainingServices.dropFirst())
+            let enabled = enabledServices + [service]
+            self.setupServices(blePeripheral: blePeripheral, remainingServices: remaining, enabledServices: enabled, completion: completion)
+        }
+
+        if Config.isDebugEnabled {
+            DLog("Enabling \(service.debugName)")
+        }
+
+        switch service {
+        case .neopixels:
+            blePeripheral.adafruitNeoPixelsEnable() { _ in next() }
+        case .light:
+            blePeripheral.adafruitLightEnable(responseHandler: self.receiveLightData) { _ in next() }
+        case .buttons:
+            blePeripheral.adafruitButtonsEnable(responseHandler: self.receiveButtonsData) { _ in next() }
+        case .toneGenerator:
+            blePeripheral.adafruitToneGeneratorEnable { _ in next() }
+        case .accelerometer:
+            blePeripheral.adafruitAccelerometerEnable(responseHandler: self.receiveAccelerometerData) { _ in next() }
+        case .temperature:
+            blePeripheral.adafruitTemperatureEnable(responseHandler: self.receiveTemperatureData) { _ in next() }
+        case .humidity:
+            blePeripheral.adafruitHumidityEnable(responseHandler: self.receiveHumidityData) { _ in next() }
+        case .barometricPressure:
+            blePeripheral.adafruitBarometricPressureEnable(responseHandler: self.receiveBarometricPressureData) { _ in next() }
+        case .sound:
+            blePeripheral.adafruitSoundEnable(responseHandler: self.receiveSoundData) { _ in next() }
+        case .gyroscope:
+            blePeripheral.adafruitGyroscopeEnable(responseHandler: self.receiveGyroscopeData) { _ in next() }
+        case .quaternion:
+            blePeripheral.adafruitQuaternionEnable(responseHandler: self.receiveQuaternionData) { _ in next() }
         }
     }
 

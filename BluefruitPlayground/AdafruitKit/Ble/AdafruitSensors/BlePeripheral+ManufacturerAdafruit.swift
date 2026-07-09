@@ -30,6 +30,7 @@ extension BlePeripheral {
             case circuitPlaygroundBluefruit
             case clue_nRF52840
             case feather_nRF52840_express
+            case feather_nRF52840_sense
             case feather_nRF52832
             
             var identifier: [[UInt8]] {  // Board identifiers used on the advertisement packet (USB PID)
@@ -37,6 +38,7 @@ extension BlePeripheral {
                 case .circuitPlaygroundBluefruit: return [[0x45, 0x80], [0x46, 0x80]]
                 case .clue_nRF52840: return [[0x71, 0x80], [0x72, 0x80]]
                 case .feather_nRF52840_express: return [[0x29, 0x80], [0x2A, 0x80]]
+                case .feather_nRF52840_sense: return [[0x87, 0x80], [0x88, 0x80]]
                 case .feather_nRF52832: return [[0x60, 0xEA]]
                 }
             }
@@ -46,6 +48,7 @@ extension BlePeripheral {
                 case .circuitPlaygroundBluefruit: return 10
                 case .clue_nRF52840: return 1
                 case .feather_nRF52840_express: return 0
+                case .feather_nRF52840_sense: return 0
                 case .feather_nRF52832: return 0
                 }
             }

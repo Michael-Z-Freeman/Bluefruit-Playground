@@ -27,6 +27,8 @@ class BlePeripheralSimulated: BlePeripheral {
             result = "Feather"
         case .feather_nRF52840_express:
             result = "Feather Express"
+        case .feather_nRF52840_sense:
+            result = "Feather Sense"
         }
         return result
     }

@@ -45,7 +45,7 @@ class AdafruitBoardsManager {
     func startBoard(connectedBlePeripheral blePeripheral: BlePeripheral, services: [AdafruitBoard.BoardService]? = nil, completion: @escaping (Result<Void, Error>) -> Void) {
         
         guard blePeripheral.state == .connected else {
-            completion(.failure(AdafruitBoard.BoardError.errorBoardNotConnected))
+            completeOnMain(result: .failure(AdafruitBoard.BoardError.errorBoardNotConnected), completion: completion)
             return
         }
         
@@ -59,7 +59,17 @@ class AdafruitBoardsManager {
             if case .success = result {
                 self.currentBoard = adafruitBoard
             }
+            self.completeOnMain(result: result, completion: completion)
+        }
+    }
+
+    private func completeOnMain(result: Result<Void, Error>, completion: @escaping (Result<Void, Error>) -> Void) {
+        if Thread.isMainThread {
             completion(result)
+        } else {
+            DispatchQueue.main.async {
+                completion(result)
+            }
         }
     }
     

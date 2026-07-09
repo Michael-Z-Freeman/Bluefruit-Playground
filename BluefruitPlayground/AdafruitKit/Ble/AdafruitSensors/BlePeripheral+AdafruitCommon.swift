@@ -125,7 +125,9 @@ extension BlePeripheral {
                     }
                 }
                 
-                enableNotificationsHandler()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    enableNotificationsHandler()
+                }
             }
         } else {        // Use default timePeriod
             enableNotificationsHandler()
@@ -252,24 +254,38 @@ extension BlePeripheral {
     
     // MARK: - Utils
     func adafruitDataToFloatArray(_ data: Data) -> [Float]? {
-        let unitSize = MemoryLayout<Float32>.stride
-        var bytes = [Float32](repeating: 0, count: data.count / unitSize)
-        (data as NSData).getBytes(&bytes, length: data.count * unitSize)
-        
-        return bytes
+        let unitSize = MemoryLayout<UInt32>.size
+        guard data.count % unitSize == 0 else { return nil }
+
+        return stride(from: 0, to: data.count, by: unitSize).map { offset in
+            let bits = data.withUnsafeBytes { rawBuffer -> UInt32 in
+                rawBuffer.loadUnaligned(fromByteOffset: offset, as: UInt32.self)
+            }
+            return Float(bitPattern: UInt32(littleEndian: bits))
+        }
     }
     
     func adafruitDataToUInt16Array(_ data: Data) -> [UInt16]? {
-        let unitSize = MemoryLayout<UInt16>.stride
-        var words = [UInt16](repeating: 0, count: data.count / unitSize)
-        (data as NSData).getBytes(&words, length: data.count * unitSize)
-        return words
+        let unitSize = MemoryLayout<UInt16>.size
+        guard data.count % unitSize == 0 else { return nil }
+
+        return stride(from: 0, to: data.count, by: unitSize).map { offset in
+            let word = data.withUnsafeBytes { rawBuffer -> UInt16 in
+                rawBuffer.loadUnaligned(fromByteOffset: offset, as: UInt16.self)
+            }
+            return UInt16(littleEndian: word)
+        }
     }
     
     func adafruitDataToInt16Array(_ data: Data) -> [Int16]? {
-        let unitSize = MemoryLayout<Int16>.stride
-        var words = [Int16](repeating: 0, count: data.count / unitSize)
-        (data as NSData).getBytes(&words, length: data.count * unitSize)
-        return words
+        let unitSize = MemoryLayout<Int16>.size
+        guard data.count % unitSize == 0 else { return nil }
+
+        return stride(from: 0, to: data.count, by: unitSize).map { offset in
+            let word = data.withUnsafeBytes { rawBuffer -> UInt16 in
+                rawBuffer.loadUnaligned(fromByteOffset: offset, as: UInt16.self)
+            }
+            return Int16(bitPattern: UInt16(littleEndian: word))
+        }
     }
 }

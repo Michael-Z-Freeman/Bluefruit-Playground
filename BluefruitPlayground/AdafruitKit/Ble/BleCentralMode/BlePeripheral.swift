@@ -561,7 +561,10 @@ extension BlePeripheral: CBPeripheralDelegate {
     }
 
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
-        //DLog("didDiscoverServices for: \(peripheral.name ?? peripheral.identifier.uuidString)")
+        if Config.isDebugEnabled {
+            let services = peripheral.services?.map { $0.uuid.uuidString }.joined(separator: ", ") ?? "<none>"
+            DLog("didDiscoverServices for: \(peripheral.name ?? peripheral.identifier.uuidString), error: \(String(describing: error)), services: \(services)")
+        }
         finishedExecutingCommand(error: error)
     }
 
