@@ -223,7 +223,7 @@ class AdafruitBoard {
     private func defaultServices(for model: BlePeripheral.AdafruitManufacturerData.BoardModel?) -> [BoardService] {
         switch model {
         case .feather_nRF52840_sense:
-            return [.light, .accelerometer, .temperature, .humidity, .barometricPressure, .sound, .gyroscope]
+            return [.neopixels, .light, .buttons, .accelerometer, .temperature, .humidity, .barometricPressure, .sound, .gyroscope, .quaternion]
         default:
             return BoardService.allCases
         }

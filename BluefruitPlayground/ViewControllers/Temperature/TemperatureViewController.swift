@@ -19,7 +19,7 @@ class TemperatureViewController: ModuleViewController {
 
     // Data
     private var chartPanelViewController: TemperaturePanelViewController!
-    private var isCelsius = false
+    private var isCelsius = true
     private var temperatureCelsius: Float?
 
     // MARK: - Lifecycle
@@ -30,7 +30,7 @@ class TemperatureViewController: ModuleViewController {
         chartPanelViewController = (addPanelViewController(storyboardIdentifier: TemperaturePanelViewController.kIdentifier) as! TemperaturePanelViewController)
 
         // Get temperature units
-        isCelsius = UserDefaults.standard.bool(forKey: TemperatureViewController.kTemperatureUnitSettingsKey)
+        isCelsius = UserDefaults.standard.object(forKey: TemperatureViewController.kTemperatureUnitSettingsKey) as? Bool ?? true
         chartPanelViewController.isCelsius = isCelsius
 
         // UI

@@ -147,7 +147,7 @@ Download it from the Bluefruit Playground guide at learn.adafruit.com";
 "modules_sound_title" = "Sound Level";
 "modules_sound_subtitle" = "View sound level in decibels";
 "modules_quaternion_title" = "Orientation";
-"modules_quaternion_subtitle" = "View CLUE's relative position in space";
+"modules_quaternion_subtitle" = "View the board's relative position in space";
 
 "modules_disconnect_title" = "Disconnect";
 "modules_disconnect_subtitle" = "Close the current connection";
@@ -315,7 +315,7 @@ To control Sparky the Blue Smoke Monster, attach Circuit Playground Bluefruit to
 // Quaternion
 
 "quaternion_title" = "Orientation";
-"quaternion_help" = "The Orientation module uses readings from CLUE's accelerometer, magnetometer, & gyro sensors to determine the board’s rotational position.
+"quaternion_help" = "The Orientation module uses readings from the board's accelerometer, magnetometer, & gyro sensors to determine the board’s rotational position.
 
 • Orientation is reflected in the position of the 3D model
 

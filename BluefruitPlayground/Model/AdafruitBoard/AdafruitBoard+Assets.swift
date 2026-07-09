@@ -17,7 +17,7 @@ extension AdafruitBoard {
             switch model {
             case .circuitPlaygroundBluefruit:
                 filename = "cpb.scn"
-            case .clue_nRF52840:
+            case .clue_nRF52840, .feather_nRF52840_sense:
                 filename = "clue.scn"
             default:
                 filename = nil
@@ -48,7 +48,7 @@ extension AdafruitBoard {
         switch model {
         case .circuitPlaygroundBluefruit:
             name = "board_cpb"
-        case .clue_nRF52840:
+        case .clue_nRF52840, .feather_nRF52840_sense:
             name = "board_clue_front"
         default:
             name = nil
