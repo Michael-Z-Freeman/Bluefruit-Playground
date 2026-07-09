@@ -27,6 +27,7 @@ open class BlePeripheral: NSObject {
 
     enum PeripheralError: Error {
         case timeout
+        case notConnected
     }
 
     // Data
@@ -380,6 +381,12 @@ open class BlePeripheral: NSObject {
     }
 
     private func executeCommand(command: BleCommand) {
+        guard peripheral.state == .connected || command.type == .disconnect else {
+            DLog("Ignoring BLE command while peripheral is not connected: \(peripheral.name ?? peripheral.identifier.uuidString), state: \(peripheral.state.rawValue)")
+            command.completion(withError: PeripheralError.notConnected)
+            commandQueue.executeNext()
+            return
+        }
 
         switch command.type {
         case .discoverService:

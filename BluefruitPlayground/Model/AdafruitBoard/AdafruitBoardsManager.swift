@@ -79,6 +79,8 @@ class AdafruitBoardsManager {
     
     // MARK: - BLE Notifications
     private weak var willdDisconnectFromPeripheralObserver: NSObjectProtocol?
+    private weak var didConnectToPeripheralObserver: NSObjectProtocol?
+    private var isRestoringBoardAfterReconnect = false
     
     private func registerNotifications(enabled: Bool) {
         let notificationCenter = NotificationCenter.default
@@ -92,9 +94,32 @@ class AdafruitBoardsManager {
                 // Force clear neopixels on disconnect
                 board.neopixelSetAllPixelsColor(.clear)
             })
+
+            didConnectToPeripheralObserver = notificationCenter.addObserver(forName: .didConnectToPeripheral, object: nil, queue: .main, using: {[weak self] notification in
+                self?.didReconnectToPeripheral(notification: notification)
+            })
             
         } else {
             if let willdDisconnectFromPeripheralObserver = willdDisconnectFromPeripheralObserver {notificationCenter.removeObserver(willdDisconnectFromPeripheralObserver)}
+            if let didConnectToPeripheralObserver = didConnectToPeripheralObserver {notificationCenter.removeObserver(didConnectToPeripheralObserver)}
+        }
+    }
+
+    private func didReconnectToPeripheral(notification: Notification) {
+        guard !isRestoringBoardAfterReconnect else { return }
+        guard let board = currentBoard else { return }
+        guard let identifier = notification.userInfo?[BleManager.NotificationUserInfoKey.uuid.rawValue] as? UUID,
+              identifier == board.blePeripheral?.identifier else { return }
+        guard let blePeripheral = Config.bleManager.peripheral(with: identifier),
+              blePeripheral.state == .connected else { return }
+
+        DLog("Restoring board services after reconnect")
+        isRestoringBoardAfterReconnect = true
+        board.setupPeripheral(blePeripheral: blePeripheral) { [weak self] result in
+            self?.isRestoringBoardAfterReconnect = false
+            if case let .failure(error) = result {
+                DLog("Error restoring board services after reconnect: \(error.localizedDescription)")
+            }
         }
     }
 }
