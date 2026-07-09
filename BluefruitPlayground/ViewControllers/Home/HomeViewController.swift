@@ -181,7 +181,7 @@ class HomeViewController: UIViewController {
         if board.isSoundEnabled {
             result.append(.sound)
         }
-        if board.isAccelerometerEnabled && board.isButtonsEnabled {
+        if board.model == .circuitPlaygroundBluefruit && board.isAccelerometerEnabled && board.isButtonsEnabled {
             result.append(.puppet)
         }
         return result

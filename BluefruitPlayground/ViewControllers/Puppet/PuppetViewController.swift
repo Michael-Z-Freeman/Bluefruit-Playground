@@ -37,8 +37,10 @@ class PuppetViewController: UIViewController {
     
     // Camera Data
     private let captureSession = AVCaptureSession()
+    private let captureSessionQueue = DispatchQueue(label: "com.adafruit.bluefruitplayground.captureSession")
     private var isUsingFrontCamera = true
     private var isFullScreen = false
+    private var isCameraEnabled = false
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -121,6 +123,8 @@ class PuppetViewController: UIViewController {
         let enabled = enableCameraCaptureSession(captureInput: camera)
         
         if enabled {
+            isCameraEnabled = true
+            
             // Show the cameraView
             if animated {
                 UIView.animate(withDuration: 0.3) {
@@ -137,40 +141,39 @@ class PuppetViewController: UIViewController {
     private func enableCameraCaptureSession(captureInput: AVCaptureDevice) -> Bool {
         guard let input = try? AVCaptureDeviceInput(device: captureInput) else { return false }
         
-        var isEnabled = true
-        
-        // Disable current camera session
-        captureSession.stopRunning()
-        
-        // Configure
-        captureSession.beginConfiguration()
-        
-        let previousInput = captureSession.inputs.first
-        for input in captureSession.inputs {
-            captureSession.removeInput(input)
-        }
-        
-        if captureSession.canAddInput(input) {
-            captureSession.addInput(input)
-        } else {
-            DLog("Error adding input to capture session")
-            isEnabled = false
+        cameraView.videoPreviewLayer.session = captureSession
+        captureSessionQueue.async { [captureSession] in
+            captureSession.stopRunning()
+            captureSession.beginConfiguration()
             
-            // Revert to previous input
-            if let previousInput = previousInput, captureSession.canAddInput(previousInput) {
-                captureSession.addInput(previousInput)
+            let previousInput = captureSession.inputs.first
+            for input in captureSession.inputs {
+                captureSession.removeInput(input)
             }
+            
+            if captureSession.canAddInput(input) {
+                captureSession.addInput(input)
+            } else {
+                DLog("Error adding input to capture session")
+                
+                // Revert to previous input
+                if let previousInput = previousInput, captureSession.canAddInput(previousInput) {
+                    captureSession.addInput(previousInput)
+                }
+            }
+            
+            captureSession.commitConfiguration()
+            captureSession.startRunning()
         }
         
-        captureSession.commitConfiguration()
-        
-        self.cameraView.videoPreviewLayer.session = captureSession
-        captureSession.startRunning()
-        return isEnabled
+        return true
     }
     
     private func disableCamera(animated: Bool) {
-        captureSession.stopRunning()
+        isCameraEnabled = false
+        captureSessionQueue.async { [captureSession] in
+            captureSession.stopRunning()
+        }
         
         // Hide the cameraView
         if animated {
@@ -188,7 +191,7 @@ class PuppetViewController: UIViewController {
     }
     
     private func switchScreenMode() {
-        if captureSession.isRunning {
+        if isCameraEnabled {
             disableCamera(animated: true)
         } else {
             enableCamera(isFrontCamera: isUsingFrontCamera, animated: true)
