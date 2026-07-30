@@ -17,7 +17,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var baseTableView: UITableView!
 
     // Data
-    private enum Modules {
+    private enum Modules: Equatable {
         case neopixels
         case light
         case button
@@ -27,6 +27,7 @@ class HomeViewController: UIViewController {
         case humidity
         case pressure
         case sound
+        case gyroscope
         case quaternion
         case puppet
         
@@ -41,6 +42,7 @@ class HomeViewController: UIViewController {
             case .humidity: return "modules_humidity_title"
             case .pressure: return "modules_pressure_title"
             case .sound: return "modules_sound_title"
+            case .gyroscope: return "modules_gyroscope_title"
             case .quaternion: return "modules_quaternion_title"
             case .puppet: return "modules_puppet_title"
             }
@@ -57,6 +59,7 @@ class HomeViewController: UIViewController {
             case .humidity: return "modules_humidity_subtitle"
             case .pressure: return "modules_pressure_subtitle"
             case .sound: return "modules_sound_subtitle"
+            case .gyroscope: return "modules_gyroscope_subtitle"
             case .quaternion: return "modules_quaternion_subtitle"
             case .puppet: return "modules_puppet_subtitle"
             }
@@ -73,12 +76,13 @@ class HomeViewController: UIViewController {
             case .humidity: return UIColor(named: "module_humidity_color")!
             case .pressure: return UIColor(named: "module_pressure_color")!
             case .sound: return UIColor(named: "module_sound_color")!
+            case .gyroscope: return UIColor(named: "module_accelerometer_color")!
             case .quaternion: return UIColor(named: "module_quaternion_color")!
             case .puppet: return UIColor(named: "module_puppet_color")!
             }
         }
         
-        var storyboardId: String {
+        var storyboardId: String? {
             switch self {
             case .neopixels:
                 return NeoPixelsViewController.kIdentifier
@@ -98,6 +102,8 @@ class HomeViewController: UIViewController {
                 return BarometricPressureViewController.kIdentifier
             case .sound:
                 return SoundViewController.kIdentifier
+            case .gyroscope:
+                return nil
             case .quaternion:
                 return QuaternionViewController.kIdentifier
             case .puppet:
@@ -165,6 +171,9 @@ class HomeViewController: UIViewController {
         }
         if board.isAccelerometerEnabled {
             result.append(.accelerometer)
+        }
+        if board.isGyroscopeEnabled {
+            result.append(.gyroscope)
         }
         if board.isQuaternionEnabled {
             result.append(.quaternion)
@@ -286,7 +295,12 @@ extension HomeViewController: UITableViewDelegate {
             break
         case .module:
             let module = menuItems[indexPath.row]
-            let viewController = ScreenFlowManager.modulesStoryboard.instantiateViewController(withIdentifier: module.storyboardId)
+            let viewController: UIViewController
+            if module == .gyroscope {
+                viewController = GyroscopeViewController()
+            } else {
+                viewController = ScreenFlowManager.modulesStoryboard.instantiateViewController(withIdentifier: module.storyboardId!)
+            }
 
             // Show viewController with completion block
             CATransaction.begin()

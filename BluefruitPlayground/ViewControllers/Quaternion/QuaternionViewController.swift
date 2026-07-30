@@ -37,6 +37,9 @@ class QuaternionViewController: ModuleViewController {
             
             // Setup scene
             sceneView.scene = scene
+            if let pointOfView = scene.rootNode.childNode(withName: "camera", recursively: true) {
+                sceneView.pointOfView = pointOfView
+            }
             sceneView.autoenablesDefaultLighting = true
             sceneView.isUserInteractionEnabled = true
         }

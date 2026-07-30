@@ -31,11 +31,13 @@ extension BlePeripheral {
     // MARK: - Service Actions
     func adafruitServiceEnable(serviceUuid: CBUUID, mainCharacteristicUuid: CBUUID, completion: ((Result<(Int, CBCharacteristic), Error>) -> Void)?) {
 
-        self.characteristic(uuid: mainCharacteristicUuid, serviceUuid: serviceUuid) { [unowned self] (characteristic, error) in
+        self.characteristic(uuid: mainCharacteristicUuid, serviceUuid: serviceUuid) { [weak self] (characteristic, error) in
             guard let characteristic = characteristic, error == nil else {
                 completion?(.failure(error ?? PeripheralAdafruitError.invalidCharacteristic))
                 return
             }
+
+            guard let self = self else { return }
 
             // Check version
             self.adafruitVersion(serviceUuid: serviceUuid) { version in
@@ -64,8 +66,12 @@ extension BlePeripheral {
             switch result {
             case let .success(characteristic):      // Version supported
                 self?.adafruitServiceSetRepeatingResponse(characteristic: characteristic, timePeriod: timePeriod, responseHandler: responseHandler, completion: { result in
-                    
-                    completion?(.success(characteristic))
+                    switch result {
+                    case .success:
+                        completion?(.success(characteristic))
+                    case let .failure(error):
+                        completion?(.failure(error))
+                    }
                 })
                 
             case let .failure(error):           // Unsupported version (or error)
@@ -78,12 +84,13 @@ extension BlePeripheral {
     private func adafruitServiceSetRepeatingResponse(characteristic: CBCharacteristic, timePeriod: TimeInterval?, responseHandler: @escaping(Result<(Data, UUID), Error>) -> Void, completion: ((Result<Void, Error>) -> Void)?) {
         
         // Prepare notification handler
-        let notifyHandler: ((Error?) -> Void)? = { [unowned self] error in
+        let notifyHandler: ((Error?) -> Void)? = { [weak self] error in
             guard error == nil else {
                 responseHandler(.failure(error!))
                 return
             }
-            
+
+            guard let self = self else { return }
             if let data = characteristic.value {
                 responseHandler(.success((data, self.identifier)))
             }
@@ -115,7 +122,11 @@ extension BlePeripheral {
         // Time period
         if let timePeriod = timePeriod, let serviceUuid = characteristic.service?.uuid {    // Set timePeriod if not nil
             
-            self.adafruitSetPeriod(timePeriod, serviceUuid: serviceUuid) { _ in
+            self.adafruitSetPeriod(timePeriod, serviceUuid: serviceUuid) { result in
+                if case let .failure(error) = result {
+                    completion?(.failure(error))
+                    return
+                }
                 
                 if Config.isDebugEnabled {
                     // Check period

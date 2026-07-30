@@ -34,6 +34,9 @@ class AccelerometerViewController: ModuleViewController {
             
             // Setup scene
             sceneView.scene = scene
+            if let pointOfView = scene.rootNode.childNode(withName: "camera", recursively: true) {
+                sceneView.pointOfView = pointOfView
+            }
             sceneView.autoenablesDefaultLighting = true
             sceneView.isUserInteractionEnabled = true
         }
@@ -94,4 +97,78 @@ extension AccelerometerViewController: AdafruitAccelerometerDelegate {
     }
 }
 
+final class GyroscopeViewController: UIViewController {
+    private let xValueLabel = GyroscopeViewController.valueLabel()
+    private let yValueLabel = GyroscopeViewController.valueLabel()
+    private let zValueLabel = GyroscopeViewController.valueLabel()
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        title = LocalizationManager.shared.localizedString("gyroscope_title")
+        view.backgroundColor = UIColor(named: "main")
+
+        let stack = UIStackView(arrangedSubviews: [
+            axisRow(title: "X", valueLabel: xValueLabel),
+            axisRow(title: "Y", valueLabel: yValueLabel),
+            axisRow(title: "Z", valueLabel: zValueLabel)
+        ])
+        stack.axis = .vertical
+        stack.spacing = 24
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(stack)
+
+        NSLayoutConstraint.activate([
+            stack.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
+            stack.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
+            stack.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
+        ])
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let board = AdafruitBoardsManager.shared.currentBoard
+        board?.gyroscopeDelegate = self
+        if let value = board?.gyroscopeLastValue() {
+            update(value)
+        }
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        AdafruitBoardsManager.shared.currentBoard?.gyroscopeDelegate = nil
+    }
+
+    private func axisRow(title: String, valueLabel: UILabel) -> UIStackView {
+        let titleLabel = UILabel()
+        titleLabel.text = title
+        titleLabel.font = .preferredFont(forTextStyle: .title2)
+        titleLabel.textColor = UIColor(named: "text_default")
+
+        let row = UIStackView(arrangedSubviews: [titleLabel, valueLabel])
+        row.axis = .horizontal
+        row.distribution = .equalSpacing
+        row.alignment = .center
+        return row
+    }
+
+    private static func valueLabel() -> UILabel {
+        let label = UILabel()
+        label.font = .monospacedDigitSystemFont(ofSize: 28, weight: .medium)
+        label.textColor = UIColor(named: "text_default")
+        label.text = "--"
+        return label
+    }
+
+    private func update(_ value: BlePeripheral.GyroscopeValue) {
+        xValueLabel.text = String(format: "%.3f rad/s", value.x)
+        yValueLabel.text = String(format: "%.3f rad/s", value.y)
+        zValueLabel.text = String(format: "%.3f rad/s", value.z)
+    }
+}
+
+extension GyroscopeViewController: AdafruitGyroscopeDelegate {
+    func adafruitGyroscopeReceived(_ gyroscope: BlePeripheral.GyroscopeValue) {
+        update(gyroscope)
+    }
+}

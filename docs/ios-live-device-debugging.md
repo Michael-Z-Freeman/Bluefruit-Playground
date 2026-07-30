@@ -171,6 +171,15 @@ setNotify -> notification-state callback -> value callback repeats
   reconnect path reaches `AdafruitBoardsManager.didReconnectToPeripheral` and
   restores the board services.
 
+Service setup now preserves failures from period writes and notification
+subscription. A missing optional service is recorded as unavailable and is not
+shown in the module list; a disconnect during setup fails the board setup.
+
+## Gyroscope
+
+When the board accepts the gyroscope subscription, the home screen presents a
+Gyroscope module with live X, Y, and Z rotation speeds in radians per second.
+
 ## Current observation
 
 With the Accelerometer screen open, LLDB received no value callbacks for 30

@@ -15,6 +15,7 @@
 		07C62BEA2191C7C3F869E281EFE65CD9 /* AnimatedZoomViewJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA54478B4B431286E230CB640E04799 /* AnimatedZoomViewJob.swift */; };
 		08112C7AE5C4989B43A7905922204AE5 /* ScatterChartDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514732A3D3B56253ADD031F52EE1155F /* ScatterChartDataSet.swift */; };
 		0A57F70B57434A8A9B506E4E094A15E7 /* CandleStickChartRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1B0D160F53548ABE7CFDD9FAEA4865 /* CandleStickChartRenderer.swift */; };
+		0ABA9D9480F724E844F6BC6CA761A655 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CB74A84DF62E0DBFFA4715EF79E08A1 /* Foundation.framework */; };
 		0B655F0CD6A230B431BE3E91F223D348 /* PieHighlighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF04A2FF11E33D226A9470152A45A78 /* PieHighlighter.swift */; };
 		0C989F0F0CBA183E1E9E2E673ED9AD60 /* ActiveLabel-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 24B897968B4C47D5AD4C05AA2BE1CF2C /* ActiveLabel-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0EF75D918236BEC9E1559F026E584C45 /* ActiveBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC14DA1D70A8B253BABA15BDFD1BE61B /* ActiveBuilder.swift */; };
@@ -39,6 +40,7 @@
 		24E21B001DE0E7C9519F2210BBC0E60E /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCF0904A02908FF213AF21B0BEB691E /* UIImageExtension.swift */; };
 		27FE9AE5A43F21796E410A186D388B00 /* BarHighlighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78783311FD6501E37EC6FFC67689480 /* BarHighlighter.swift */; };
 		281F88E7CD42AEE187E0E039FB1E2EDB /* ColorControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF4DCBF0B1102969707F32783661373 /* ColorControl.swift */; };
+		3005CFAC1BC47BF5DF93974B7D05152A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CB74A84DF62E0DBFFA4715EF79E08A1 /* Foundation.framework */; };
 		312311A140EFB484BA149514203A7CC4 /* ChartDataEntryBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14FB8BA41FB089CC52896D44E50511A /* ChartDataEntryBase.swift */; };
 		3141387E12E1D6EBAEA63E6F50833A31 /* DefaultValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18ED0BA4FA0B77BEE3C29BC9564B81A /* DefaultValueFormatter.swift */; };
 		32959FF975FFF556983CC8F696CCC160 /* MarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5193C755D12443CA49DFC1F668CAC33 /* MarkerView.swift */; };
@@ -53,7 +55,6 @@
 		3FB3837C5974A2D7C197FCE7C0F75B3E /* IHighlighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029B9064BE4C6332695C1B320C8CFC0C /* IHighlighter.swift */; };
 		402005BF0EE088F73D2C7AA19788808A /* BarLineScatterCandleBubbleChartDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4468A88D639E57429C3253F55A7217 /* BarLineScatterCandleBubbleChartDataProvider.swift */; };
 		40B0EFCAC9D00C108A219DED171AEF1D /* UIViewWithCommonInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9ABC0B861438E1EFB8F407857E95D /* UIViewWithCommonInit.swift */; };
-		4232F9EF9D09B30205AC4F4805D5AF38 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */; };
 		47134EF0FE36B261F50D22B1F4D4A55F /* CircleShapeRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4FE7DF010FB4DCB6D067FB2A39978D /* CircleShapeRenderer.swift */; };
 		4718C103AC35A020ACED44A75B81820D /* BarLineScatterCandleBubbleChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7F9D312FF74579D0C0C0803F108CC0 /* BarLineScatterCandleBubbleChartData.swift */; };
 		47F718C5FB201323B6F223150F6D3333 /* CGPointExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DC5BB9BD895EFC78338D1498AA41C7 /* CGPointExtension.swift */; };
@@ -86,6 +87,7 @@
 		68EC9C22C262B79FA59C3D11BD3EB249 /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6C220879208CC2AC1365A95F8A4453 /* Range.swift */; };
 		693E3F021C70EEE3259107769EBF4FA3 /* ColorSliderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC2FBFAA0D2CD8D035DC7D812638656 /* ColorSliderDelegate.swift */; };
 		69C915F64B3EA80B47889DE96B15E4CB /* BubbleChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7907C6A0FBB14F4E100067816516224A /* BubbleChartView.swift */; };
+		6BD3A9D0E860216EE8E458230048E3F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CB74A84DF62E0DBFFA4715EF79E08A1 /* Foundation.framework */; };
 		6BDB43FC069797E6E803CECE22FB5DFD /* AdjustedHitBoxColorControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13FCBA44FD3C5EECFA662F298071AD0 /* AdjustedHitBoxColorControl.swift */; };
 		6CC31286615389756FA95ED3B9211500 /* ChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E8046AC7416567CE5B3245013137A8 /* ChartData.swift */; };
 		6EA5B14BBC32B3DDD285D44C5C15A95F /* ScatterChartDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B092B3BC111603DC668A530CC356A9 /* ScatterChartDataProvider.swift */; };
@@ -97,13 +99,11 @@
 		74F6A5F1985DDB5EC25536E492E7268A /* LineChartDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D725B8736AD35FEAFD75FFB2635D8AED /* LineChartDataProvider.swift */; };
 		76FF946D98DD97DA857CD7CF902A1E7D /* BarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3DF7158EC7C4ED2AC989658DA72521 /* BarChartView.swift */; };
 		77BAD6E12B75B5130DDBEFA7D61F61F1 /* Pods-BluefruitPlayground-SimulateBluetooth-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F4BFE80721B4B5BE021A1B74F8DCAB /* Pods-BluefruitPlayground-SimulateBluetooth-dummy.m */; };
-		7818465FC1FCB3267A4F2894D4059DB8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */; };
 		79034514F626D276A76AA6FE1D587C3F /* ColorPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD165933A4E2A11B020B676D123ACF7 /* ColorPickerDelegate.swift */; };
 		7AB3A08AAC62D0811BE9DD0BC4D7DE18 /* ZoomViewJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A4D7CA12630A72BC33C291F71C99D2 /* ZoomViewJob.swift */; };
 		7F343F8118CEA07E41767903A1EC24AC /* ControlWithThumbView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825D61DB2F28EA067367527603BE7596 /* ControlWithThumbView.swift */; };
 		81DC303C260B65E2162CE6343AC717AB /* CustomColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6E186899781346AC6D741017282DC4 /* CustomColorPickerViewController.swift */; };
 		8386A19956AB2059435FBAE81E7EBCC8 /* MSWeakTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EDEE413DFBF1445C516E95BF0F1E9D8 /* MSWeakTimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		83B35EDEB5D6ECDC3FC7D79DDC9F4BD2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */; };
 		8537445BC26FFDE62B0B0CC0C6574954 /* BarChartDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38259D3AE3CE968731A810290CB533B /* BarChartDataSet.swift */; };
 		85D179D26E069E4D66F6A098D3AFFE6B /* CombinedChartRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41577F4785A3AA33CA1B511FF142506 /* CombinedChartRenderer.swift */; };
 		864E0040D21D7C61020A7803348E0E64 /* CandleChartDataEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6223F18EB0349B3AF54F22C2C852C0 /* CandleChartDataEntry.swift */; };
@@ -121,6 +121,7 @@
 		8DF0B1B5744DB5504C405C4A734BD053 /* RadarChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7F346AC38D307FEB521CC452B9E1F9 /* RadarChartData.swift */; };
 		8F487CE4463420AB91E0CEFA2BF0FB46 /* ILineChartDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B019FA1B7253FF89010F0BE3F2415032 /* ILineChartDataSet.swift */; };
 		90AF8D58B12672586E63D35951E7379C /* ChartDataRendererBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F31C394023DFF74D1E29AD9A52B29E /* ChartDataRendererBase.swift */; };
+		927C8ED96B141A3716FECA45B0EDE1D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CB74A84DF62E0DBFFA4715EF79E08A1 /* Foundation.framework */; };
 		93069B7600F09E7AB3C44072AB40F5F8 /* HSBColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D91CA049B067A31D8890D225762A0 /* HSBColor.swift */; };
 		940465ECE4F0DF61CBF2345106466652 /* BarChartDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B045D6FA086C84A2E294FEED9E123DC5 /* BarChartDataProvider.swift */; };
 		94D1D0B1F73D55AA8F2CD8CD5C278D54 /* BubbleChartDataEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28889599BB305A5D6A72A01C9EFE5D85 /* BubbleChartDataEntry.swift */; };
@@ -147,7 +148,6 @@
 		ABE4EE47AD5D3F7E94CF46F549529190 /* StringTrimExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35C43BA2040E1D5F0A8C8169669903E /* StringTrimExtension.swift */; };
 		AC8DA54DAD6F8602D4BC1CBA2736724B /* Fill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FD02F398C986C3FF6CBEADDE746CDD /* Fill.swift */; };
 		ADC78B2001890737A3B7C395A303F7D6 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D156EC269FDEA4AB23764D46B51984 /* Animator.swift */; };
-		AEBBB09AB0E01FCBA2A0C89779057331 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */; };
 		AF40252C04B14D7A63B66BC55EE02DA2 /* PieChartRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E0149C8D740943FFB9831BD2580629 /* PieChartRenderer.swift */; };
 		AF56E3FC49480C8ADC739369EF2A11D1 /* MSWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 976857F9C388A9DEA359ADA23F238C00 /* MSWeakTimer.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		B1DF88F51A1F63F1CC42079DFD4778EB /* ChartBaseDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1B9F979B4E505B6D322D5D7DF06299 /* ChartBaseDataSet.swift */; };
@@ -173,12 +173,12 @@
 		D31F0578529B2FE1F201CB23E1647D30 /* BubbleChartDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9448E8C6AE5B5D70D9926855A064D1 /* BubbleChartDataSet.swift */; };
 		D3DCA41886118A1589DD19E4AE74E32C /* ColorPickerControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9251427097E9EB2734D8F908B595F301 /* ColorPickerControllerProtocol.swift */; };
 		D4DF32D8B46646B149887CD97C5EF4EB /* MoveViewJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD16658B00D97D07CB374AA5E81DACD2 /* MoveViewJob.swift */; };
-		D6473192483F57D2A873D83C1D78A36B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */; };
 		D6F0E968FF663D3C279EE5CE7A02CA22 /* RadarChartDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1807FE688734A48651645FA6B02C8835 /* RadarChartDataSet.swift */; };
 		DA32243B2434A934C22C511780C37A44 /* Pods-BluefruitPlayground-SimulateBluetooth-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 56EEDF328E877591AB792B84E088FAC8 /* Pods-BluefruitPlayground-SimulateBluetooth-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDC6BACF58D18D75C56EDF43CA01173C /* ActiveType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A014F6CC1F5B85A464A234B9337FBB /* ActiveType.swift */; };
 		DEEA7AD209ABB1C538BA79218148AECA /* ChartColorTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C98DBC556AF633B1F9189D298FEC8FC /* ChartColorTemplates.swift */; };
 		E013A5EF3A67C025E14ECE1AEBCA5F9E /* MSWeakTimer-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F1ED546E050C852D635C75E0B230938E /* MSWeakTimer-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E089895873AECAEA315C499D434005BE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CB74A84DF62E0DBFFA4715EF79E08A1 /* Foundation.framework */; };
 		E17CD0F426FE91A15F242A76850869D7 /* PieRadarChartViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661AEAB0D9F9E9C9F3FF43D8043B04D0 /* PieRadarChartViewBase.swift */; };
 		E5040AE088B12C0C170C0783EA2A801C /* Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A2A3948BD729E592CD5F0C0EA3A309 /* Description.swift */; };
 		E5B79FECB503A2AF52BB743D50DD2F70 /* LineScatterCandleRadarRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7190311218033724A0ACD2217EBB4E21 /* LineScatterCandleRadarRenderer.swift */; };
@@ -194,6 +194,7 @@
 		F26CA554D632C066109EFE2971058990 /* BubbleChartDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A98B75F771FC105447405F4B2460E3C /* BubbleChartDataProvider.swift */; };
 		F3073C974E4FD16359151112D464B198 /* RadarChartDataEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B9CDC4298FBAB7A0F14C7C39E7528C /* RadarChartDataEntry.swift */; };
 		F346F3857E82192EF329D7D0746E061C /* TransformerHorizontalBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C8CF25856E30F3F48E003663D6E186 /* TransformerHorizontalBarChart.swift */; };
+		F34C850587BD73B1A85120C9051444C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CB74A84DF62E0DBFFA4715EF79E08A1 /* Foundation.framework */; };
 		F38E5FC31E6E56C3FA979D9E6F674DCF /* LimitedGestureCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692D3743EFAB61B6D41E055A59A136A2 /* LimitedGestureCircleView.swift */; };
 		F51AC9641C0C674C369DB4E15EE6A26C /* RadarHighlighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13B2B52CF5F7A6722F4AF0F8B9D299F /* RadarHighlighter.swift */; };
 		F6ED7E84D3EDCB6A89314A828580152C /* DefaultAxisValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE06D710582FDA891A1CBD92FAFA773 /* DefaultAxisValueFormatter.swift */; };
@@ -205,7 +206,6 @@
 		F9E4FE65DFCE10489C72BEB0A506AF73 /* DataApproximator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969012A4E0BF64DBE453935419034040 /* DataApproximator.swift */; };
 		FA1D72D30AE31BA8B9CE614F90A29175 /* ComponentSliderControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC1CF5C2CD24A029E523BC807639DA4 /* ComponentSliderControls.swift */; };
 		FD49A72EE216AE1355E805F74B00080E /* ColorPaletteDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7913DEF9D8B8DECB48196CB29658E61 /* ColorPaletteDelegate.swift */; };
-		FED155A743D4135401A419670ED36624 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */; };
 		FFAFBBA057C671FD91AF57B5D8359256 /* CandleChartDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579101AF40EB9800C3CC5F91902E987F /* CandleChartDataProvider.swift */; };
 /* End PBXBuildFile section */
 
@@ -313,6 +313,7 @@
 		2A702AD283C617061FFA4619CEA3B5A2 /* Pods-BluefruitPlayground-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-BluefruitPlayground-umbrella.h"; sourceTree = "<group>"; };
 		2B35970ADEBA9EC7F824D128E1CA9F10 /* BarLineScatterCandleBubbleChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarLineScatterCandleBubbleChartDataSet.swift; path = Source/Charts/Data/Implementations/Standard/BarLineScatterCandleBubbleChartDataSet.swift; sourceTree = "<group>"; };
 		2C6E186899781346AC6D741017282DC4 /* CustomColorPickerViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CustomColorPickerViewController.swift; path = FlexColorPicker/Classes/CustomColorPickerViewController.swift; sourceTree = "<group>"; };
+		2CB74A84DF62E0DBFFA4715EF79E08A1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		2CF04A2FF11E33D226A9470152A45A78 /* PieHighlighter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PieHighlighter.swift; path = Source/Charts/Highlight/PieHighlighter.swift; sourceTree = "<group>"; };
 		2E9AD431A4507621F972BFB668A50F1B /* ActiveLabel.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ActiveLabel.modulemap; sourceTree = "<group>"; };
 		31B092B3BC111603DC668A530CC356A9 /* ScatterChartDataProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScatterChartDataProvider.swift; path = Source/Charts/Interfaces/ScatterChartDataProvider.swift; sourceTree = "<group>"; };
@@ -321,7 +322,6 @@
 		3473283F79E075E1BA5A8945BAEA7D54 /* LineChartData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineChartData.swift; path = Source/Charts/Data/Implementations/Standard/LineChartData.swift; sourceTree = "<group>"; };
 		36FEDE1072BA6C10500B6D3234F2E7F0 /* DataApproximator+N.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DataApproximator+N.swift"; path = "Source/Charts/Filters/DataApproximator+N.swift"; sourceTree = "<group>"; };
 		37FD02F398C986C3FF6CBEADDE746CDD /* Fill.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Fill.swift; path = Source/Charts/Utils/Fill.swift; sourceTree = "<group>"; };
-		384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		39B0BAE60A8338A82701B6B8DC63A41C /* ChartLimitLine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChartLimitLine.swift; path = Source/Charts/Components/ChartLimitLine.swift; sourceTree = "<group>"; };
 		3CAD5E933A526FEB839DD20FB1D2C939 /* LineRadarChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineRadarChartDataSet.swift; path = Source/Charts/Data/Implementations/Standard/LineRadarChartDataSet.swift; sourceTree = "<group>"; };
 		3DE06D710582FDA891A1CBD92FAFA773 /* DefaultAxisValueFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DefaultAxisValueFormatter.swift; path = Source/Charts/Formatters/DefaultAxisValueFormatter.swift; sourceTree = "<group>"; };
@@ -512,7 +512,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FED155A743D4135401A419670ED36624 /* Foundation.framework in Frameworks */,
+				0ABA9D9480F724E844F6BC6CA761A655 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,7 +520,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83B35EDEB5D6ECDC3FC7D79DDC9F4BD2 /* Foundation.framework in Frameworks */,
+				3005CFAC1BC47BF5DF93974B7D05152A /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -528,7 +528,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6473192483F57D2A873D83C1D78A36B /* Foundation.framework in Frameworks */,
+				927C8ED96B141A3716FECA45B0EDE1D9 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,7 +536,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7818465FC1FCB3267A4F2894D4059DB8 /* Foundation.framework in Frameworks */,
+				E089895873AECAEA315C499D434005BE /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,7 +544,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEBBB09AB0E01FCBA2A0C89779057331 /* Foundation.framework in Frameworks */,
+				F34C850587BD73B1A85120C9051444C2 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -552,7 +552,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4232F9EF9D09B30205AC4F4805D5AF38 /* Foundation.framework in Frameworks */,
+				6BD3A9D0E860216EE8E458230048E3F9 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,6 +636,14 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/Charts";
+			sourceTree = "<group>";
+		};
+		7AECBA61365544F357B06DE1C8710425 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				2CB74A84DF62E0DBFFA4715EF79E08A1 /* Foundation.framework */,
+			);
+			name = iOS;
 			sourceTree = "<group>";
 		};
 		B8157302014AA663F8CAF775EB751D4B /* Pods-BluefruitPlayground-SimulateBluetooth */ = {
@@ -860,17 +868,9 @@
 		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E4801F62A6B08CD9B5410329F1A18FDE /* iOS */,
+				7AECBA61365544F357B06DE1C8710425 /* iOS */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E4801F62A6B08CD9B5410329F1A18FDE /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */,
-			);
-			name = iOS;
 			sourceTree = "<group>";
 		};
 		ED4070739954A9A99D3B00672B59D598 /* Support Files */ = {
@@ -1130,7 +1130,7 @@
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
 			minimizedProjectReferenceProxies = 0;
-			preferredProjectObjectVersion = 77;
+			preferredProjectObjectVersion = 100;
 			productRefGroup = EED570E07CE68BB8988644B5631E9840 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1473,6 +1473,46 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		03C7889C6B5CE40663FD35011292EC80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1EC19F81F47A9BB10DE9740440D5AE2D /* Pods-BluefruitPlayground.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = "Target Support Files/Pods-BluefruitPlayground/Pods-BluefruitPlayground-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-BluefruitPlayground/Pods-BluefruitPlayground.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		0B50A6D0E2FF186C6C2528FABB168E87 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 22593CCF54A094ED2EF0A61AFA7646B4 /* MSWeakTimer.release.xcconfig */;
@@ -1491,7 +1531,7 @@
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "Target Support Files/MSWeakTimer/MSWeakTimer-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1531,7 +1571,7 @@
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "Target Support Files/ActiveLabel/ActiveLabel-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1570,7 +1610,7 @@
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "Target Support Files/Charts/Charts-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1591,122 +1631,7 @@
 			};
 			name = Release;
 		};
-		497D9113EC84D3B52B175C45129ADC96 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = CC4C072AC702710C36079EAA373FF4D5 /* Charts.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = NO;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				GCC_PREFIX_HEADER = "Target Support Files/Charts/Charts-prefix.pch";
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = "Target Support Files/Charts/Charts-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/Charts/Charts.modulemap";
-				PRODUCT_MODULE_NAME = Charts;
-				PRODUCT_NAME = Charts;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_INSTALL_OBJC_HEADER = YES;
-				SWIFT_VERSION = 5.3;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		50B62FAC662F205880D198FBE20783F6 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0DCA91498CE705DDAD991CCAC2E18010 /* MSWeakTimer.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = NO;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				GCC_PREFIX_HEADER = "Target Support Files/MSWeakTimer/MSWeakTimer-prefix.pch";
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = "Target Support Files/MSWeakTimer/MSWeakTimer-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/MSWeakTimer/MSWeakTimer.modulemap";
-				PRODUCT_MODULE_NAME = MSWeakTimer;
-				PRODUCT_NAME = MSWeakTimer;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_INSTALL_OBJC_HEADER = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		758D0CEB205E203F66B53B13A2C080CC /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 53764DACADC3B164921D829556A9F6A8 /* FlexColorPicker.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = NO;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				GCC_PREFIX_HEADER = "Target Support Files/FlexColorPicker/FlexColorPicker-prefix.pch";
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = "Target Support Files/FlexColorPicker/FlexColorPicker-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/FlexColorPicker/FlexColorPicker.modulemap";
-				PRODUCT_MODULE_NAME = FlexColorPicker;
-				PRODUCT_NAME = FlexColorPicker;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_INSTALL_OBJC_HEADER = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		90D4D09BCB6A4660E43ACBE9ECB6FE9A /* Debug */ = {
+		25EE0D70FA460ACA9775620510C68681 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1759,7 +1684,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1772,7 +1697,161 @@
 			};
 			name = Debug;
 		};
-		9553C89E183877A5CB2F3C6801BEC129 /* Release */ = {
+		497D9113EC84D3B52B175C45129ADC96 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CC4C072AC702710C36079EAA373FF4D5 /* Charts.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_PREFIX_HEADER = "Target Support Files/Charts/Charts-prefix.pch";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Target Support Files/Charts/Charts-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/Charts/Charts.modulemap";
+				PRODUCT_MODULE_NAME = Charts;
+				PRODUCT_NAME = Charts;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_VERSION = 5.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		4CE98DABB745803A7DED7EED22692BF9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44928D6B7A81816A57053D469AB50AFF /* Pods-BluefruitPlayground.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = "Target Support Files/Pods-BluefruitPlayground/Pods-BluefruitPlayground-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-BluefruitPlayground/Pods-BluefruitPlayground.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		50B62FAC662F205880D198FBE20783F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0DCA91498CE705DDAD991CCAC2E18010 /* MSWeakTimer.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_PREFIX_HEADER = "Target Support Files/MSWeakTimer/MSWeakTimer-prefix.pch";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Target Support Files/MSWeakTimer/MSWeakTimer-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/MSWeakTimer/MSWeakTimer.modulemap";
+				PRODUCT_MODULE_NAME = MSWeakTimer;
+				PRODUCT_NAME = MSWeakTimer;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		758D0CEB205E203F66B53B13A2C080CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 53764DACADC3B164921D829556A9F6A8 /* FlexColorPicker.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_PREFIX_HEADER = "Target Support Files/FlexColorPicker/FlexColorPicker-prefix.pch";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Target Support Files/FlexColorPicker/FlexColorPicker-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/FlexColorPicker/FlexColorPicker.modulemap";
+				PRODUCT_MODULE_NAME = FlexColorPicker;
+				PRODUCT_NAME = FlexColorPicker;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E14D99195872B10CDF5539C713DCDB1B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1822,7 +1901,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1834,126 +1913,7 @@
 			};
 			name = Release;
 		};
-		BB3FF05E69E83536C64DF738419C0036 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B8122C7855F9C3F36050CFCE762D3047 /* Pods-BluefruitPlayground-SimulateBluetooth.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = NO;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				INFOPLIST_FILE = "Target Support Files/Pods-BluefruitPlayground-SimulateBluetooth/Pods-BluefruitPlayground-SimulateBluetooth-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-BluefruitPlayground-SimulateBluetooth/Pods-BluefruitPlayground-SimulateBluetooth.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		CADE868BF0D16B623E4F5CFB9893E42E /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1EC19F81F47A9BB10DE9740440D5AE2D /* Pods-BluefruitPlayground.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = NO;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				INFOPLIST_FILE = "Target Support Files/Pods-BluefruitPlayground/Pods-BluefruitPlayground-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-BluefruitPlayground/Pods-BluefruitPlayground.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		E1FE3D25B6F5B1EA6318D9E55AB11ACC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 44928D6B7A81816A57053D469AB50AFF /* Pods-BluefruitPlayground.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = NO;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				INFOPLIST_FILE = "Target Support Files/Pods-BluefruitPlayground/Pods-BluefruitPlayground-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-BluefruitPlayground/Pods-BluefruitPlayground.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		EA630F16CCCC109970637E82F4868ED7 /* Debug */ = {
+		E8C27519BCDCA3452CCEC1E0DDFDC6CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ABEF661835398085C68B97F52B9D9D8B /* Pods-BluefruitPlayground-SimulateBluetooth.debug.xcconfig */;
 			buildSettings = {
@@ -1971,7 +1931,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = "Target Support Files/Pods-BluefruitPlayground-SimulateBluetooth/Pods-BluefruitPlayground-SimulateBluetooth-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1991,6 +1951,46 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
+		};
+		ECCFB8934034F932DCCEFF56A428759A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8122C7855F9C3F36050CFCE762D3047 /* Pods-BluefruitPlayground-SimulateBluetooth.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = "Target Support Files/Pods-BluefruitPlayground-SimulateBluetooth/Pods-BluefruitPlayground-SimulateBluetooth-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-BluefruitPlayground-SimulateBluetooth/Pods-BluefruitPlayground-SimulateBluetooth.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
 		};
 		ECF39A9634851BB302BCF544787000CB /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -2011,7 +2011,7 @@
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "Target Support Files/ActiveLabel/ActiveLabel-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2049,7 +2049,7 @@
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "Target Support Files/FlexColorPicker/FlexColorPicker-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2084,8 +2084,8 @@
 		11278C4E27AA46C0A276436DAD0F8203 /* Build configuration list for PBXNativeTarget "Pods-BluefruitPlayground" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E1FE3D25B6F5B1EA6318D9E55AB11ACC /* Debug */,
-				CADE868BF0D16B623E4F5CFB9893E42E /* Release */,
+				4CE98DABB745803A7DED7EED22692BF9 /* Debug */,
+				03C7889C6B5CE40663FD35011292EC80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2093,8 +2093,8 @@
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				90D4D09BCB6A4660E43ACBE9ECB6FE9A /* Debug */,
-				9553C89E183877A5CB2F3C6801BEC129 /* Release */,
+				25EE0D70FA460ACA9775620510C68681 /* Debug */,
+				E14D99195872B10CDF5539C713DCDB1B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2120,8 +2120,8 @@
 		D1D1C3EDF6DEABB5293BA704BD24994D /* Build configuration list for PBXNativeTarget "Pods-BluefruitPlayground-SimulateBluetooth" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EA630F16CCCC109970637E82F4868ED7 /* Debug */,
-				BB3FF05E69E83536C64DF738419C0036 /* Release */,
+				E8C27519BCDCA3452CCEC1E0DDFDC6CD /* Debug */,
+				ECCFB8934034F932DCCEFF56A428759A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

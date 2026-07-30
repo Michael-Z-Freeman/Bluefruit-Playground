@@ -77,7 +77,7 @@ class AdafruitBoard {
         case errorDiscoveringServices
     }
     
-    enum BoardService: CaseIterable {
+    enum BoardService: CaseIterable, Hashable {
         case neopixels
         case light
         case buttons
@@ -157,6 +157,7 @@ class AdafruitBoard {
 
     // Data
     private(set) weak var blePeripheral: BlePeripheral?
+    private(set) var unavailableServices = Set<BoardService>()
     var model: BlePeripheral.AdafruitManufacturerData.BoardModel? {
         return blePeripheral?.adafruitManufacturerData()?.boardModel
     }
@@ -242,6 +243,7 @@ class AdafruitBoard {
         
         // Set current peripheral
         self.blePeripheral = blePeripheral
+        unavailableServices.removeAll()
         
         setupServices(blePeripheral: blePeripheral, remainingServices: services, enabledServices: [], completion: completion)
     }
@@ -260,9 +262,23 @@ class AdafruitBoard {
             return
         }
 
-        let next = {
+        let next: (Result<Void, Error>) -> Void = { result in
             let remaining = Array(remainingServices.dropFirst())
-            let enabled = enabledServices + [service]
+            var enabled = enabledServices
+
+            switch result {
+            case .success:
+                enabled.append(service)
+            case let .failure(error):
+                self.unavailableServices.insert(service)
+                DLog("Unable to enable \(service.debugName): \(error.localizedDescription)")
+
+                guard blePeripheral.state == .connected else {
+                    completion(.failure(BoardError.errorBoardNotConnected))
+                    return
+                }
+            }
+
             self.setupServices(blePeripheral: blePeripheral, remainingServices: remaining, enabledServices: enabled, completion: completion)
         }
 
@@ -272,27 +288,34 @@ class AdafruitBoard {
 
         switch service {
         case .neopixels:
-            blePeripheral.adafruitNeoPixelsEnable() { _ in next() }
+            blePeripheral.adafruitNeoPixelsEnable(completion: next)
         case .light:
-            blePeripheral.adafruitLightEnable(responseHandler: self.receiveLightData) { _ in next() }
+            blePeripheral.adafruitLightEnable(responseHandler: self.receiveLightData, completion: next)
         case .buttons:
-            blePeripheral.adafruitButtonsEnable(responseHandler: self.receiveButtonsData) { _ in next() }
+            blePeripheral.adafruitButtonsEnable(responseHandler: self.receiveButtonsData, completion: next)
         case .toneGenerator:
-            blePeripheral.adafruitToneGeneratorEnable { _ in next() }
+            blePeripheral.adafruitToneGeneratorEnable(completion: next)
         case .accelerometer:
-            blePeripheral.adafruitAccelerometerEnable(responseHandler: self.receiveAccelerometerData) { _ in next() }
+            blePeripheral.adafruitAccelerometerEnable(responseHandler: self.receiveAccelerometerData, completion: next)
         case .temperature:
-            blePeripheral.adafruitTemperatureEnable(responseHandler: self.receiveTemperatureData) { _ in next() }
+            blePeripheral.adafruitTemperatureEnable(responseHandler: self.receiveTemperatureData, completion: next)
         case .humidity:
-            blePeripheral.adafruitHumidityEnable(responseHandler: self.receiveHumidityData) { _ in next() }
+            blePeripheral.adafruitHumidityEnable(responseHandler: self.receiveHumidityData, completion: next)
         case .barometricPressure:
-            blePeripheral.adafruitBarometricPressureEnable(responseHandler: self.receiveBarometricPressureData) { _ in next() }
+            blePeripheral.adafruitBarometricPressureEnable(responseHandler: self.receiveBarometricPressureData, completion: next)
         case .sound:
-            blePeripheral.adafruitSoundEnable(responseHandler: self.receiveSoundData) { _ in next() }
+            blePeripheral.adafruitSoundEnable(responseHandler: self.receiveSoundData) { result in
+                switch result {
+                case .success:
+                    next(.success(()))
+                case let .failure(error):
+                    next(.failure(error))
+                }
+            }
         case .gyroscope:
-            blePeripheral.adafruitGyroscopeEnable(responseHandler: self.receiveGyroscopeData) { _ in next() }
+            blePeripheral.adafruitGyroscopeEnable(responseHandler: self.receiveGyroscopeData, completion: next)
         case .quaternion:
-            blePeripheral.adafruitQuaternionEnable(responseHandler: self.receiveQuaternionData) { _ in next() }
+            blePeripheral.adafruitQuaternionEnable(responseHandler: self.receiveQuaternionData, completion: next)
         }
     }
 
