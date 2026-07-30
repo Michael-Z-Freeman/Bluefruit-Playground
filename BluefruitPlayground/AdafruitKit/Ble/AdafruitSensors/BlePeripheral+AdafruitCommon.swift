@@ -16,7 +16,8 @@ extension BlePeripheral {
 
     private static let kAdafruitDefaultVersionValue = 1         // Used as default version value if version characteristic cannot be read
 
-    static let kAdafruitSensorDefaultPeriod: TimeInterval = 0.2
+    // The Feather Sense firmware is stable with the dashboard's 500 ms stream cadence.
+    static let kAdafruitSensorDefaultPeriod: TimeInterval = 0.5
 
     
     // MARK: - Errors
