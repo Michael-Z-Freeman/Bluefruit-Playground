@@ -97,6 +97,10 @@ Adafruit_APDS9960 apds9960; // Proximity, Light, Gesture, Color
 Adafruit_BMP280   bmp280;   // Temperature, Barometric
 Adafruit_SHT31    sht30;    // Humid
 
+// Additional board-specific correction measured against a room thermometer.
+// Keep the Feather in its normal enclosure and power state when recalibrating.
+constexpr float TEMPERATURE_REFERENCE_OFFSET_C = -7.4f;
+
 // pick your filter! slower == better quality output
 //Adafruit_NXPSensorFusion filter; // slowest
 //Adafruit_Madgwick filter;  // faster than NXP
@@ -254,6 +258,9 @@ uint16_t measure_temperature(uint8_t* buf, uint16_t bufsize)
   } else {
     temp = temp - 2.5; // Running on battery
   }
+
+  // The BMP280 measures the warmed board, rather than the surrounding air.
+  temp += TEMPERATURE_REFERENCE_OFFSET_C;
   
   memcpy(buf, &temp, 4);
   return 4;
