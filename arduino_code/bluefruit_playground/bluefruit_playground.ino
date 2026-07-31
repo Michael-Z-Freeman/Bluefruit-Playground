@@ -22,6 +22,7 @@
 #include <SPI.h>
 #include <SdFat.h>
 #include <PDM.h>
+#include <Wire.h>
 #include <Adafruit_LittleFS.h>
 #include <InternalFileSystem.h>
 #include <bluefruit.h>
@@ -545,6 +546,56 @@ void startAdv(void)
   Bluefruit.Advertising.start(0);                // 0 = Don't stop advertising after n seconds  
 }
 
+void enterDeepSleep()
+{
+  strip.clear();
+  strip.show();
+  digitalWrite(LED_BUILTIN, LOW);
+
+  // Stop the microphone clock and release the PDM peripheral.
+  PDM.end();
+
+#if defined(ARDUINO_NRF52840_CLUE) || defined(ARDUINO_NRF52840_FEATHER_SENSE)
+  lsm6ds33.setAccelDataRate(LSM6DS_RATE_SHUTDOWN);
+  lsm6ds33.setGyroDataRate(LSM6DS_RATE_SHUTDOWN);
+  lis3mdl.setOperationMode(LIS3MDL_POWERDOWNMODE);
+  apds9960.enable(false);
+  bmp280.setSampling(Adafruit_BMP280::MODE_SLEEP);
+  sht30.heater(false);
+
+  // Put external QSPI flash into deep power-down before disabling its bus.
+  flashTransport.runCommand(0xB9);
+  flash.end();
+#endif
+
+  // The sensors remain powered from the Feather's 3.3 V rail, but the MCU no
+  // longer drives or clocks the I2C bus.
+  Wire.end();
+  pinMode(PIN_WIRE_SDA, INPUT);
+  pinMode(PIN_WIRE_SCL, INPUT);
+
+#if defined(PIN_QSPI_CS)
+  pinMode(PIN_QSPI_CS, OUTPUT);
+  digitalWrite(PIN_QSPI_CS, HIGH);
+#endif
+
+  Serial.end();
+
+  // System OFF wake is a reset, so retaining RAM provides no benefit here.
+  // Disabling retention selects Nordic's lowest System OFF configuration.
+  for (size_t block = 0; block < sizeof(NRF_POWER->RAM) / sizeof(NRF_POWER->RAM[0]); ++block) {
+    NRF_POWER->RAM[block].POWERCLR =
+        POWER_RAM_POWER_S0RETENTION_Msk | POWER_RAM_POWER_S1RETENTION_Msk;
+  }
+
+  // This configures Button 1 as a low-level wake source and enters System OFF.
+  // Waking performs a reset, so setup() will run again.
+  systemOff(PIN_BUTTON1, LOW);
+  while (true) {
+    __WFE();
+  }
+}
+
 void loop()
 {
   // Check if the board button is held for 2 seconds to enter deep sleep
@@ -552,11 +603,6 @@ void loop()
     unsigned long pressStart = millis();
     while (digitalRead(PIN_BUTTON1) == LOW) {
       if (millis() - pressStart > 2000) {
-        // Turn off Neopixels and Red LED before sleeping
-        strip.clear();
-        strip.show();
-        digitalWrite(LED_BUILTIN, LOW); // Turn off Red LED to show device is in sleep
-        
         // Wait for user to release the button
         while (digitalRead(PIN_BUTTON1) == LOW) {
           delay(10);
@@ -565,37 +611,7 @@ void loop()
         
         Serial.println("Entering System OFF...");
         Serial.flush();
-
-        // 1. Power down sensors
-#if defined(ARDUINO_NRF52840_CLUE) || defined(ARDUINO_NRF52840_FEATHER_SENSE)
-        lsm6ds33.setAccelDataRate(LSM6DS_RATE_SHUTDOWN);
-        lsm6ds33.setGyroDataRate(LSM6DS_RATE_SHUTDOWN);
-        lis3mdl.setOperationMode(LIS3MDL_POWERDOWNMODE);
-        apds9960.enable(false);
-        bmp280.setSampling(Adafruit_BMP280::MODE_SLEEP);
-#endif
-
-        // 2. Power down external SPI Flash
-        flashTransport.runCommand(0xB9); // Send Deep Power-Down command (0xB9) to SPI flash chip
-        flash.end();                     // Uninitialize flash driver and uninit QSPI peripheral
-
-#if defined(PIN_QSPI_CS)
-        pinMode(PIN_QSPI_CS, OUTPUT);
-        digitalWrite(PIN_QSPI_CS, HIGH); // Explicitly drive QSPI CS high to prevent floating/leakage
-#endif
-
-        // Enter Nordic System OFF mode (deep sleep).
-        // Waking up is done by pressing the Reset button (nearest to USB).
-        sd_power_system_off();
-        
-        // Fallback: If sd_power_system_off() returns/fails (e.g. if SoftDevice is busy),
-        // force System OFF directly via the hardware register.
-        NRF_POWER->SYSTEMOFF = 1;
-        
-        // If it still hasn't shut down, halt execution to prevent battery drain
-        while (1) {
-          __WFI(); // Wait for Interrupt (enters sleep mode of the CPU core)
-        }
+        enterDeepSleep();
       }
       delay(10);
     }
