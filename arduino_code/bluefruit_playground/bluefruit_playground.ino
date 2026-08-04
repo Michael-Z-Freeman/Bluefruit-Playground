@@ -359,8 +359,8 @@ uint32_t boot_reset_reason = 0;
 //--------------------------------------------------------------------+
 void setup()
 {
-  boot_reset_reason = NRF_POWER->RESETREAS;
-  NRF_POWER->RESETREAS = 0xFFFFFFFF; // Clear reset reasons for next time
+  // The Arduino core captures RESETREAS before it clears the hardware register.
+  boot_reset_reason = readResetReason();
 
   Adafruit_Sensor* accel_sensor;
 
@@ -548,49 +548,50 @@ void startAdv(void)
 
 void enterDeepSleep()
 {
+  // Make the deliberate shutdown unambiguous before Bluetooth disconnects.
+  for (uint8_t flash = 0; flash < 3; ++flash) {
+    strip.fill(strip.Color(0, 255, 0));
+    strip.show();
+    delay(150);
+    strip.clear();
+    strip.show();
+    delay(150);
+  }
+
   strip.clear();
   strip.show();
   digitalWrite(LED_BUILTIN, LOW);
 
-  // Stop the microphone clock and release the PDM peripheral.
-  PDM.end();
+  // Stop BLE activity cleanly before the SoftDevice enters System OFF.
+  Bluefruit.Advertising.restartOnDisconnect(false);
+  Bluefruit.Advertising.stop();
 
-#if defined(ARDUINO_NRF52840_CLUE) || defined(ARDUINO_NRF52840_FEATHER_SENSE)
-  lsm6ds33.setAccelDataRate(LSM6DS_RATE_SHUTDOWN);
-  lsm6ds33.setGyroDataRate(LSM6DS_RATE_SHUTDOWN);
-  lis3mdl.setOperationMode(LIS3MDL_POWERDOWNMODE);
-  apds9960.enable(false);
-  bmp280.setSampling(Adafruit_BMP280::MODE_SLEEP);
-  sht30.heater(false);
-
-  // Put external QSPI flash into deep power-down before disabling its bus.
-  flashTransport.runCommand(0xB9);
-  flash.end();
-#endif
-
-  // The sensors remain powered from the Feather's 3.3 V rail, but the MCU no
-  // longer drives or clocks the I2C bus.
-  Wire.end();
-  pinMode(PIN_WIRE_SDA, INPUT);
-  pinMode(PIN_WIRE_SCL, INPUT);
-
-#if defined(PIN_QSPI_CS)
-  pinMode(PIN_QSPI_CS, OUTPUT);
-  digitalWrite(PIN_QSPI_CS, HIGH);
-#endif
-
-  Serial.end();
-
-  // System OFF wake is a reset, so retaining RAM provides no benefit here.
-  // Disabling retention selects Nordic's lowest System OFF configuration.
-  for (size_t block = 0; block < sizeof(NRF_POWER->RAM) / sizeof(NRF_POWER->RAM[0]); ++block) {
-    NRF_POWER->RAM[block].POWERCLR =
-        POWER_RAM_POWER_S0RETENTION_Msk | POWER_RAM_POWER_S1RETENTION_Msk;
+  uint16_t connectionHandles[BLE_MAX_CONNECTION];
+  uint8_t connectionCount = Bluefruit.getConnectedHandles(
+      connectionHandles, BLE_MAX_CONNECTION);
+  for (uint8_t index = 0; index < connectionCount; ++index) {
+    Bluefruit.disconnect(connectionHandles[index]);
   }
 
-  // This configures Button 1 as a low-level wake source and enters System OFF.
-  // Waking performs a reset, so setup() will run again.
-  systemOff(PIN_BUTTON1, LOW);
+  uint32_t disconnectStart = millis();
+  while (Bluefruit.connected() && millis() - disconnectStart < 1000) {
+    delay(10);
+  }
+
+  // This is the documented Adafruit System OFF sequence. The User button is
+  // normally high and wakes the board only when it is pressed low.
+  pinMode(PIN_BUTTON1, INPUT_PULLUP_SENSE);
+  Serial.printf(
+      "System OFF armed: button=%d, VBUS=%d\n",
+      digitalRead(PIN_BUTTON1),
+      (NRF_POWER->USBREGSTATUS & POWER_USBREGSTATUS_VBUSDETECT_Msk) != 0);
+  Serial.flush();
+  uint32_t systemOffResult = sd_power_system_off();
+
+  // System OFF should not return. Preserve serial long enough to expose any
+  // SoftDevice error instead of silently resuming normal BLE operation.
+  Serial.printf("System OFF failed: 0x%08lX\n", systemOffResult);
+  Serial.flush();
   while (true) {
     __WFE();
   }
@@ -608,10 +609,13 @@ void loop()
           delay(10);
         }
         delay(100); // Debounce
-        
-        Serial.println("Entering System OFF...");
-        Serial.flush();
-        enterDeepSleep();
+
+        // Do not arm a low-level wake source until the button is stably high.
+        if (digitalRead(PIN_BUTTON1) == HIGH) {
+          Serial.println("Entering System OFF...");
+          Serial.flush();
+          enterDeepSleep();
+        }
       }
       delay(10);
     }
